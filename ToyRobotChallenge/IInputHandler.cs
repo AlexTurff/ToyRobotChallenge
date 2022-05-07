@@ -11,14 +11,23 @@ namespace ToyRobotChallenge
 
     public class InputHandler : IInputHandler
     {
-        public InputHandler(IRobot robotToControl)
-        {
-            RobotToControl = robotToControl;
-        }
-
+        private readonly Action<string> reportCallback;
         public IRobot RobotToControl { get; set; }
 
+
+        public InputHandler(IRobot robotToControl, Action<string> reportCallback)
+        {
+            RobotToControl = robotToControl;
+            this.reportCallback = reportCallback;
+        }
+
+
         public void ProcessInputLine(string input)
+        {
+            throw new NotImplementedException();
+        }
+
+        private string Report()
         {
             throw new NotImplementedException();
         }
