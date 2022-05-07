@@ -12,7 +12,7 @@ namespace ToyRobotChallenge
         void Move();
         void TurnLeft();
         void TurnRight();
-        void Place(ICoordinates newPosition, CompassDirection newDirection);
+        void Place(ICoordinates newPosition, IDirection newDirection);
         string Report();
     }
 
@@ -36,7 +36,7 @@ namespace ToyRobotChallenge
             throw new NotImplementedException();
         }
 
-        public void Place(ICoordinates newPosition, CompassDirection newDirection)
+        public void Place(ICoordinates newPosition, IDirection newDirection)
         {
             // todo make out of bounds error format available to unit tests?
             throw new NotImplementedException();
