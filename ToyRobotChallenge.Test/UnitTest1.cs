@@ -36,4 +36,18 @@ namespace ToyRobotChallenge.Test
             // multiple reports with actions in between
         }
     }
+
+    [TestFixture]
+    public class InputHandlerTests
+    {
+               [Test]
+        public void Test1() { }
+    }
+
+    [TestFixture]
+    public class ToyRobotTests
+    {
+               [Test]
+        public void Test1() { }
+    }
 }
