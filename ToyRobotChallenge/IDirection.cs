@@ -6,30 +6,30 @@ namespace ToyRobotChallenge
 {
     public interface IDirection
     {
-        CompassDirections CurrentDirection { get; }
+        CompassDirection CurrentDirection { get; }
 
-        CompassDirections TurnLeft();
+        CompassDirection TurnLeft();
 
-        CompassDirections TurnRight();
+        CompassDirection TurnRight();
     }
 
     public class Direction : IDirection
     {
-        public CompassDirections CurrentDirection { get; private set; }
+        public CompassDirection CurrentDirection { get; private set; }
 
 
-        public Direction(CompassDirections initialDirection)
+        public Direction(CompassDirection initialDirection)
         {
             CurrentDirection = initialDirection;
         }
 
 
-        public CompassDirections TurnLeft()
+        public CompassDirection TurnLeft()
         {
             throw new NotImplementedException();
         }
 
-        public CompassDirections TurnRight()
+        public CompassDirection TurnRight()
         {
             throw new NotImplementedException();
         }

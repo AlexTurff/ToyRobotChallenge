@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ToyRobotChallenge
 {
-    public enum CompassDirections
+    public enum CompassDirection
     {
         North,
         East,

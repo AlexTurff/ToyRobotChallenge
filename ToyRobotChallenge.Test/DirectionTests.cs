@@ -9,11 +9,11 @@ namespace ToyRobotChallenge.Test
         /// Basic test to check Constructor and CurrentDirection getter
         /// </summary>
         [Test]
-        [TestCase(CompassDirections.North, CompassDirections.North)]
-        [TestCase(CompassDirections.East, CompassDirections.East)]
-        [TestCase(CompassDirections.South, CompassDirections.South)]
-        [TestCase(CompassDirections.West, CompassDirections.West)]        
-        public void TestInitialDirection(CompassDirections initialDirection, CompassDirections expectedDirection) 
+        [TestCase(CompassDirection.North, CompassDirection.North)]
+        [TestCase(CompassDirection.East, CompassDirection.East)]
+        [TestCase(CompassDirection.South, CompassDirection.South)]
+        [TestCase(CompassDirection.West, CompassDirection.West)]        
+        public void TestInitialDirection(CompassDirection initialDirection, CompassDirection expectedDirection) 
         {
             var direction = new Direction(initialDirection);
 
@@ -24,11 +24,11 @@ namespace ToyRobotChallenge.Test
         /// Test turning left once from the initial position
         /// </summary>
         [Test]
-        [TestCase(CompassDirections.North, CompassDirections.West)]
-        [TestCase(CompassDirections.East, CompassDirections.North)]
-        [TestCase(CompassDirections.South, CompassDirections.East)]
-        [TestCase(CompassDirections.West, CompassDirections.South)]
-        public void TestLeftTurn(CompassDirections initialDirection, CompassDirections expectedDirection) 
+        [TestCase(CompassDirection.North, CompassDirection.West)]
+        [TestCase(CompassDirection.East, CompassDirection.North)]
+        [TestCase(CompassDirection.South, CompassDirection.East)]
+        [TestCase(CompassDirection.West, CompassDirection.South)]
+        public void TestLeftTurn(CompassDirection initialDirection, CompassDirection expectedDirection) 
         {
             var direction = new Direction(initialDirection);
 
@@ -42,11 +42,11 @@ namespace ToyRobotChallenge.Test
         /// Test turning right once from the initial position
         /// </summary>
         [Test]
-        [TestCase(CompassDirections.North, CompassDirections.East)]
-        [TestCase(CompassDirections.East, CompassDirections.South)]
-        [TestCase(CompassDirections.South, CompassDirections.West)]
-        [TestCase(CompassDirections.West, CompassDirections.North)]
-        public void TestRightTurn(CompassDirections initialDirection, CompassDirections expectedDirection) 
+        [TestCase(CompassDirection.North, CompassDirection.East)]
+        [TestCase(CompassDirection.East, CompassDirection.South)]
+        [TestCase(CompassDirection.South, CompassDirection.West)]
+        [TestCase(CompassDirection.West, CompassDirection.North)]
+        public void TestRightTurn(CompassDirection initialDirection, CompassDirection expectedDirection) 
         {
             var direction = new Direction(initialDirection);
 
@@ -62,18 +62,18 @@ namespace ToyRobotChallenge.Test
         [Test]
         public void TestMultipleTurns()
         {
-            var direction = new Direction(CompassDirections.North);
+            var direction = new Direction(CompassDirection.North);
 
             var actualDirectionOne = direction.TurnRight();
             var actualDirectionTwo = direction.TurnRight();
             var actualDirectionThree = direction.TurnRight();
             var finalDirection = direction.TurnLeft();
 
-            Assert.AreEqual(CompassDirections.East, actualDirectionOne,"Unexpected direction after turn one");
-            Assert.AreEqual(CompassDirections.South, actualDirectionTwo, "Unexpected direction after turn two");
-            Assert.AreEqual(CompassDirections.West, actualDirectionThree, "Unexpected direction after turn three");
-            Assert.AreEqual(CompassDirections.South, finalDirection, "Unexpected direction after turn four (from method return)");
-            Assert.AreEqual(CompassDirections.South, direction.CurrentDirection, "Unexpected direction after turn four (from property)");
+            Assert.AreEqual(CompassDirection.East, actualDirectionOne,"Unexpected direction after turn one");
+            Assert.AreEqual(CompassDirection.South, actualDirectionTwo, "Unexpected direction after turn two");
+            Assert.AreEqual(CompassDirection.West, actualDirectionThree, "Unexpected direction after turn three");
+            Assert.AreEqual(CompassDirection.South, finalDirection, "Unexpected direction after turn four (from method return)");
+            Assert.AreEqual(CompassDirection.South, direction.CurrentDirection, "Unexpected direction after turn four (from property)");
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ToyRobotChallenge
 {
-    public interface IPosition
+    public interface ICoordinates
     {
         /// <summary>
         /// X co-ordinate (base 0)
@@ -17,10 +17,16 @@ namespace ToyRobotChallenge
         int VerticalPosition { get; }
     }
 
-    public class Coordinates : IPosition
+    public class Coordinates : ICoordinates
     {
-        public int HorizontalPosition => throw new NotImplementedException();
+        public Coordinates(int horizontal, int vertical)
+        {
+            HorizontalPosition = horizontal;
+            VerticalPosition = vertical;
+        }
 
-        public int VerticalPosition => throw new NotImplementedException();
+        public int HorizontalPosition { get; set; }
+
+        public int VerticalPosition { get; set; }
     }
 }
