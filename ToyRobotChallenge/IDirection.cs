@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 
 namespace ToyRobotChallenge
 {
+    /// <summary>
+    /// Interface for the management basic compass point direction in a 2d plane through turning left and right
+    /// </summary>
     public interface IDirection
     {
         CompassDirection CurrentDirection { get; }
@@ -11,27 +13,5 @@ namespace ToyRobotChallenge
         CompassDirection TurnLeft();
 
         CompassDirection TurnRight();
-    }
-
-    public class Direction : IDirection
-    {
-        public CompassDirection CurrentDirection { get; private set; }
-
-
-        public Direction(CompassDirection initialDirection)
-        {
-            CurrentDirection = initialDirection;
-        }
-
-
-        public CompassDirection TurnLeft()
-        {
-            throw new NotImplementedException();
-        }
-
-        public CompassDirection TurnRight()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -9,7 +9,7 @@ namespace ToyRobotChallenge.Test
     {
         [Test]
         [TestCaseSource(nameof(TestReportSource))]
-        public void TestReport(ICoordinates position, CompassDirection direction, string expectedOutput)
+        public void TestReport(ICoordinate position, CompassDirection direction, string expectedOutput)
         {
             var robotMock = new Mock<IRobot>();
             robotMock.SetupGet(x => x.CurrentDirection).Returns(direction);
@@ -26,14 +26,14 @@ namespace ToyRobotChallenge.Test
         public static IEnumerable<TestCaseData> TestReportSource()
         {
             //ICoordinates newPosition, CompassDirection newDirection, string expectedOutput
-            yield return new TestCaseData(new Coordinates(0, 0), CompassDirection.North, "Output: 0, 0, NORTH");
-            yield return new TestCaseData(new Coordinates(0, 0), CompassDirection.East, "Output: 0, 0, EAST");
-            yield return new TestCaseData(new Coordinates(0, 0), CompassDirection.South, "Output: 0, 0, SOUTH");
-            yield return new TestCaseData(new Coordinates(0, 0), CompassDirection.West, "Output: 0, 0, WEST");
+            yield return new TestCaseData(new Coordinate(0, 0), CompassDirection.North, "Output: 0,0,NORTH");
+            yield return new TestCaseData(new Coordinate(0, 0), CompassDirection.East, "Output: 0,0,EAST");
+            yield return new TestCaseData(new Coordinate(0, 0), CompassDirection.South, "Output: 0,0,SOUTH");
+            yield return new TestCaseData(new Coordinate(0, 0), CompassDirection.West, "Output: 0,0,WEST");
 
-            yield return new TestCaseData(new Coordinates(1, 0), CompassDirection.West, "Output: 1, 0, WEST");
-            yield return new TestCaseData(new Coordinates(0, 1), CompassDirection.West, "Output: 0, 1, WEST");
-            yield return new TestCaseData(new Coordinates(3, 3), CompassDirection.West, "Output: 3, 3, WEST");
+            yield return new TestCaseData(new Coordinate(1, 0), CompassDirection.West, "Output: 1,0,WEST");
+            yield return new TestCaseData(new Coordinate(0, 1), CompassDirection.West, "Output: 0,1,WEST");
+            yield return new TestCaseData(new Coordinate(3, 3), CompassDirection.West, "Output: 3,3,WEST");
         }
 
         [Test]
@@ -47,15 +47,15 @@ namespace ToyRobotChallenge.Test
         [TestCase("gfdgret", false, null, null,null)]
         public void TestProcessInputLinePlace(string inputLine, bool expectedPlaceCalled, int? expectedX, int? expectedY, CompassDirection? expectedDirection)
         {
-            ICoordinates actualCoordinate = null;
+            ICoordinate actualCoordinate = null;
             IDirection actualDirection = null;
 
             var robotMock = new Mock<IRobot>();
-            robotMock.Setup(x => x.Place(It.IsAny<ICoordinates>(),It.IsAny<IDirection>())).Callback<ICoordinates,IDirection>((c,d) => 
+            robotMock.Setup(x => x.Place(It.IsAny<ICoordinate>(),It.IsAny<IDirection>())).Callback<ICoordinate,IDirection>((c,d) => 
                 { 
                     actualCoordinate = c;
                     actualDirection = d;
-                });
+                }).Verifiable();
             var robot = robotMock.Object;
             var inputHandler = new InputHandler(robot, (s) => { });
 
@@ -67,6 +67,7 @@ namespace ToyRobotChallenge.Test
                 Assert.AreEqual(expectedX, actualCoordinate.HorizontalPosition);
                 Assert.AreEqual(expectedY, actualCoordinate.VerticalPosition);
                 Assert.AreEqual(expectedDirection, actualDirection.CurrentDirection);
+                Assert.DoesNotThrow(() => robotMock.Verify());
             }
 
             Assert.DoesNotThrow(() => robotMock.VerifyNoOtherCalls());

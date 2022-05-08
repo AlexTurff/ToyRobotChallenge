@@ -11,7 +11,7 @@ namespace ToyRobotChallenge.Test
     {
         [Test]
         [TestCaseSource(nameof(TestPlaceSource))]        
-        public void TestPlace(ICoordinates newPosition, Direction newDirection, ICoordinates expectedPosition, CompassDirection expectedDirection)
+        public void TestPlace(ICoordinate newPosition, Direction newDirection, ICoordinate expectedPosition, CompassDirection expectedDirection)
         {
             var robot = new ToyRobot();
 
@@ -28,21 +28,21 @@ namespace ToyRobotChallenge.Test
         public static IEnumerable<TestCaseData> TestPlaceSource()
         {
             //ICoordinates newPosition, CompassDirection newDirection, ICoordinates expectedPosition, CompassDirection expectedDirection
-            yield return new TestCaseData(new Coordinates(0, 0), new Direction(CompassDirection.North), new Coordinates(0, 0), CompassDirection.North).SetName("TestDirection North");
-            yield return new TestCaseData(new Coordinates(0, 0), new Direction(CompassDirection.East), new Coordinates(0, 0), CompassDirection.East).SetName("TestDirection North");
-            yield return new TestCaseData(new Coordinates(0, 0), new Direction(CompassDirection.South), new Coordinates(0, 0), CompassDirection.South).SetName("TestDirection North");
-            yield return new TestCaseData(new Coordinates(0, 0), new Direction(CompassDirection.West), new Coordinates(0, 0), CompassDirection.West).SetName("TestDirection North");
+            yield return new TestCaseData(new Coordinate(0, 0), new Direction(CompassDirection.North), new Coordinate(0, 0), CompassDirection.North).SetName("TestDirection North");
+            yield return new TestCaseData(new Coordinate(0, 0), new Direction(CompassDirection.East), new Coordinate(0, 0), CompassDirection.East).SetName("TestDirection North");
+            yield return new TestCaseData(new Coordinate(0, 0), new Direction(CompassDirection.South), new Coordinate(0, 0), CompassDirection.South).SetName("TestDirection North");
+            yield return new TestCaseData(new Coordinate(0, 0), new Direction(CompassDirection.West), new Coordinate(0, 0), CompassDirection.West).SetName("TestDirection North");
 
-            yield return new TestCaseData(new Coordinates(1, 0), new Direction(CompassDirection.North), new Coordinates(1, 0), CompassDirection.North).SetName("TestPosition X");
-            yield return new TestCaseData(new Coordinates(0, 1), new Direction(CompassDirection.North), new Coordinates(0, 1), CompassDirection.North).SetName("TestPosition Y");
-            yield return new TestCaseData(new Coordinates(1, 1), new Direction(CompassDirection.North), new Coordinates(1, 1), CompassDirection.North).SetName("TestPosition XY");
-            yield return new TestCaseData(new Coordinates(2, 3), new Direction(CompassDirection.North), new Coordinates(2, 3), CompassDirection.North).SetName("TestPosition XY 2");
-            yield return new TestCaseData(new Coordinates(4, 4), new Direction(CompassDirection.North), new Coordinates(4, 4), CompassDirection.North).SetName("TestPosition Max Bounds");
+            yield return new TestCaseData(new Coordinate(1, 0), new Direction(CompassDirection.North), new Coordinate(1, 0), CompassDirection.North).SetName("TestPosition X");
+            yield return new TestCaseData(new Coordinate(0, 1), new Direction(CompassDirection.North), new Coordinate(0, 1), CompassDirection.North).SetName("TestPosition Y");
+            yield return new TestCaseData(new Coordinate(1, 1), new Direction(CompassDirection.North), new Coordinate(1, 1), CompassDirection.North).SetName("TestPosition XY");
+            yield return new TestCaseData(new Coordinate(2, 3), new Direction(CompassDirection.North), new Coordinate(2, 3), CompassDirection.North).SetName("TestPosition XY 2");
+            yield return new TestCaseData(new Coordinate(4, 4), new Direction(CompassDirection.North), new Coordinate(4, 4), CompassDirection.North).SetName("TestPosition Max Bounds");
         }
 
         [Test]
         [TestCaseSource(nameof(TestOutOfBoundsPlaceSource))]
-        public void TestInvalidPlace(ICoordinates newPosition, IDirection newDirection)
+        public void TestInvalidPlace(ICoordinate newPosition, IDirection newDirection)
         {
             var robot = new ToyRobot();
 
@@ -54,12 +54,12 @@ namespace ToyRobotChallenge.Test
         public static IEnumerable<TestCaseData> TestOutOfBoundsPlaceSource()
         {
             //ICoordinates newPosition, CompassDirection newDirection
-            yield return new TestCaseData(new Coordinates(-1, 0), new Direction(CompassDirection.North));
-            yield return new TestCaseData(new Coordinates(0, -1), new Direction(CompassDirection.North));
-            yield return new TestCaseData(new Coordinates(-1, -1), new Direction(CompassDirection.North));
-            yield return new TestCaseData(new Coordinates(5, 0), new Direction(CompassDirection.North));
-            yield return new TestCaseData(new Coordinates(0, 5), new Direction(CompassDirection.North));
-            yield return new TestCaseData(new Coordinates(5, 5), new Direction(CompassDirection.North));
+            yield return new TestCaseData(new Coordinate(-1, 0), new Direction(CompassDirection.North));
+            yield return new TestCaseData(new Coordinate(0, -1), new Direction(CompassDirection.North));
+            yield return new TestCaseData(new Coordinate(-1, -1), new Direction(CompassDirection.North));
+            yield return new TestCaseData(new Coordinate(5, 0), new Direction(CompassDirection.North));
+            yield return new TestCaseData(new Coordinate(0, 5), new Direction(CompassDirection.North));
+            yield return new TestCaseData(new Coordinate(5, 5), new Direction(CompassDirection.North));
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace ToyRobotChallenge.Test
             var directionMoq = new Mock<IDirection>();
             directionMoq.Setup(x => x.TurnLeft()).Verifiable();
             var robot = new ToyRobot();
-            robot.Place(new Coordinates(0,0), directionMoq.Object);
+            robot.Place(new Coordinate(0,0), directionMoq.Object);
 
             robot.TurnLeft();
 
@@ -87,7 +87,7 @@ namespace ToyRobotChallenge.Test
             var directionMoq = new Mock<IDirection>();
             directionMoq.Setup(x => x.TurnRight()).Verifiable();
             var robot = new ToyRobot();
-            robot.Place(new Coordinates(0, 0), directionMoq.Object);
+            robot.Place(new Coordinate(0, 0), directionMoq.Object);
 
             robot.TurnRight();
 
@@ -96,7 +96,7 @@ namespace ToyRobotChallenge.Test
 
         [Test]
         [TestCaseSource(nameof(TestMoveSource))]
-        public void TestMove(ICoordinates initialPosition, IDirection initialDirection, ICoordinates expectedPosition)
+        public void TestMove(ICoordinate initialPosition, IDirection initialDirection, ICoordinate expectedPosition)
         {
             var robot = new ToyRobot();
             robot.Place(initialPosition, initialDirection);
@@ -111,20 +111,20 @@ namespace ToyRobotChallenge.Test
         public static IEnumerable<TestCaseData> TestMoveSource()
         {
             //ICoordinates initialPosition, IDirection initialDirection, ICoordinates expectedPosition
-            yield return new TestCaseData(new Coordinates(2, 2), new Direction(CompassDirection.North), new Coordinates(2, 3)).SetName("moving North");
-            yield return new TestCaseData(new Coordinates(2,2), new Direction(CompassDirection.East), new Coordinates(3, 2)).SetName("moving East");
-            yield return new TestCaseData(new Coordinates(2, 2), new Direction(CompassDirection.South), new Coordinates(2, 1)).SetName("moving South");
-            yield return new TestCaseData(new Coordinates(2, 2), new Direction(CompassDirection.West), new Coordinates(1, 2)).SetName("moving West");
+            yield return new TestCaseData(new Coordinate(2, 2), new Direction(CompassDirection.North), new Coordinate(2, 3)).SetName("moving North");
+            yield return new TestCaseData(new Coordinate(2,2), new Direction(CompassDirection.East), new Coordinate(3, 2)).SetName("moving East");
+            yield return new TestCaseData(new Coordinate(2, 2), new Direction(CompassDirection.South), new Coordinate(2, 1)).SetName("moving South");
+            yield return new TestCaseData(new Coordinate(2, 2), new Direction(CompassDirection.West), new Coordinate(1, 2)).SetName("moving West");
 
-            yield return new TestCaseData(new Coordinates(2, 3), new Direction(CompassDirection.North), new Coordinates(2, 4)).SetName("moving North2");
-            yield return new TestCaseData(new Coordinates(3, 2), new Direction(CompassDirection.East), new Coordinates(4, 2)).SetName("moving East2");
-            yield return new TestCaseData(new Coordinates(2, 1), new Direction(CompassDirection.South), new Coordinates(2, 0)).SetName("moving South2");
-            yield return new TestCaseData(new Coordinates(1, 2), new Direction(CompassDirection.West), new Coordinates(0, 2)).SetName("moving West2");
+            yield return new TestCaseData(new Coordinate(2, 3), new Direction(CompassDirection.North), new Coordinate(2, 4)).SetName("moving North2");
+            yield return new TestCaseData(new Coordinate(3, 2), new Direction(CompassDirection.East), new Coordinate(4, 2)).SetName("moving East2");
+            yield return new TestCaseData(new Coordinate(2, 1), new Direction(CompassDirection.South), new Coordinate(2, 0)).SetName("moving South2");
+            yield return new TestCaseData(new Coordinate(1, 2), new Direction(CompassDirection.West), new Coordinate(0, 2)).SetName("moving West2");
 
-            yield return new TestCaseData(new Coordinates(2, 4), new Direction(CompassDirection.North), new Coordinates(2, 4)).SetName("Trying to move off north of table");
-            yield return new TestCaseData(new Coordinates(4, 2), new Direction(CompassDirection.East), new Coordinates(4, 2)).SetName("Trying to move off east of table");
-            yield return new TestCaseData(new Coordinates(2, 0), new Direction(CompassDirection.South), new Coordinates(2, 0)).SetName("Trying to move off south of table");
-            yield return new TestCaseData(new Coordinates(0, 2), new Direction(CompassDirection.West), new Coordinates(0, 2)).SetName("Trying to move off west of table");
+            yield return new TestCaseData(new Coordinate(2, 4), new Direction(CompassDirection.North), new Coordinate(2, 4)).SetName("Trying to move off north of table");
+            yield return new TestCaseData(new Coordinate(4, 2), new Direction(CompassDirection.East), new Coordinate(4, 2)).SetName("Trying to move off east of table");
+            yield return new TestCaseData(new Coordinate(2, 0), new Direction(CompassDirection.South), new Coordinate(2, 0)).SetName("Trying to move off south of table");
+            yield return new TestCaseData(new Coordinate(0, 2), new Direction(CompassDirection.West), new Coordinate(0, 2)).SetName("Trying to move off west of table");
         }
 
         [Test]
@@ -132,8 +132,8 @@ namespace ToyRobotChallenge.Test
         {
             var robot = new ToyRobot();
 
-            robot.Place(new Coordinates(2,2), new Direction(CompassDirection.North));
-            robot.Place(new Coordinates(1, 3), new Direction(CompassDirection.West));
+            robot.Place(new Coordinate(2,2), new Direction(CompassDirection.North));
+            robot.Place(new Coordinate(1, 3), new Direction(CompassDirection.West));
 
             var actualPosition = robot.CurrentPosition;
             var actualDirection = robot.CurrentDirection;
