@@ -70,6 +70,7 @@ namespace ToyRobotChallenge.Test
             var thrownException = Assert.Throws<ArgumentNullException>(() => robot.Place(null, new Direction(CompassDirection.North)));
         }
 
+        [Test]
         public void TestTurnLeft()
         {
             var directionMoq = new Mock<IDirection>();
@@ -82,6 +83,7 @@ namespace ToyRobotChallenge.Test
             Assert.DoesNotThrow(() => directionMoq.Verify());
         }
 
+        [Test]
         public void TestTurnRight()
         {
             var directionMoq = new Mock<IDirection>();
@@ -105,7 +107,7 @@ namespace ToyRobotChallenge.Test
 
             Assert.AreEqual(expectedPosition.HorizontalPosition, robot.CurrentPosition.HorizontalPosition);
             Assert.AreEqual(expectedPosition.VerticalPosition, robot.CurrentPosition.VerticalPosition);
-            Assert.AreEqual(initialDirection, robot.CurrentDirection);
+            Assert.AreEqual(initialDirection.CurrentDirection, robot.CurrentDirection);
         }
 
         public static IEnumerable<TestCaseData> TestMoveSource()

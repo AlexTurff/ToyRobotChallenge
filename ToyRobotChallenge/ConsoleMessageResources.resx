@@ -123,4 +123,8 @@
   <data name="PlaceCommandBadFormat" xml:space="preserve">
     <value>The PLACE command must be in the format "PLACE [X],[Y],[Direction]" with Direction being one of the following: NORTH, EAST, SOUTH, WEST</value>
   </data>
+  <data name="PlaceCommandOutOfRange" xml:space="preserve">
+    <value>Requested position ({0},{1}) is not in bounds of the board of size ({2},{3})</value>
+    <comment>1&amp;2 are the requested locations in the X &amp; Y directions. 2 &amp; 3 are width and height of the board</comment>
+  </data>
 </root>

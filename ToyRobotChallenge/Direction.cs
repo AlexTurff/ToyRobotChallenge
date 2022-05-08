@@ -14,7 +14,7 @@ namespace ToyRobotChallenge
 
         public CompassDirection TurnLeft()
         {
-            // enum values are just integers. Incrementing by 3 and modding by 4 is equivilent to subtracting 1 but doesn't have to deal with modding -ve values
+            // enum values are just integers. Incrementing by 3 and modding by 4 is equivalent to subtracting 1 but doesn't have to deal with modding -ve values
             CurrentDirection = (CompassDirection)(((int)CurrentDirection+3) % 4);
 
             return CurrentDirection;

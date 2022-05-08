@@ -77,5 +77,14 @@ namespace ToyRobotChallenge {
                 return ResourceManager.GetString("PlaceCommandBadFormat", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested position ({0},{1}) is not in bounds of the board of size ({2},{3}).
+        /// </summary>
+        internal static string PlaceCommandOutOfRange {
+            get {
+                return ResourceManager.GetString("PlaceCommandOutOfRange", resourceCulture);
+            }
+        }
     }
 }

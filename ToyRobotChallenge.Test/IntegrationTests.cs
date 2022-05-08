@@ -14,7 +14,7 @@ namespace ToyRobotChallenge.Test
         {
             var output = "";
 
-            var inputHandler = new InputHandler(new ToyRobot(), (s) => output += s += Environment.NewLine);
+            var inputHandler = new InputHandler(new ToyRobot(), (s) => output += s);
 
             foreach(var inputLine in inputLines)
             {
@@ -29,17 +29,17 @@ namespace ToyRobotChallenge.Test
             yield return new TestCaseData(new List<string>()
             {
                 "PLACE 0,0,NORTH","MOVE","REPORT"
-            }, "0,1,NORTH");
+            }, "Output: 0,1,NORTH");
 
             yield return new TestCaseData(new List<string>()
             {
                 "PLACE 0,0,NORTH","LEFT","REPORT"
-            }, "0,0,WEST");
+            }, "Output: 0,0,WEST");
 
             yield return new TestCaseData(new List<string>()
             {
                 "PLACE 1,2,EAST","MOVE","MOVE","LEFT","MOVE","REPORT"
-            }, "3,3,NORTH");
+            }, "Output: 3,3,NORTH");
         }
     }
 }

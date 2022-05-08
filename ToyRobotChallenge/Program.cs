@@ -6,7 +6,12 @@ namespace ToyRobotChallenge
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var inputHandler = new InputHandler(new ToyRobot(), s => Console.WriteLine(s));
+
+            while (true)
+            {
+                inputHandler.ProcessInputLine(Console.ReadLine());
+            }
         }
     }
 }
