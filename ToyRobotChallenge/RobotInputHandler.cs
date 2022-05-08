@@ -92,6 +92,11 @@ namespace ToyRobotChallenge
 
         private string Report()
         {
+            if (RobotToControl.CurrentPosition == null || RobotToControl.CurrentDirection == null)
+            {
+                return string.Empty;
+            }
+
             return $"Output: {RobotToControl.CurrentPosition.HorizontalPosition},{RobotToControl.CurrentPosition.VerticalPosition},{CompassDirectionConverter.CompassDirectionToOutputString(RobotToControl.CurrentDirection)}";
         }
     }

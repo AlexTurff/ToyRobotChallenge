@@ -72,6 +72,11 @@ namespace ToyRobotChallenge.Test
             {
                 "PLACE 22,22,NORTH"
             }, string.Format(ConsoleMessageResources.PlaceCommandOutOfRange,"22","22","5","5")).SetName("bad PLACE command format");
+
+            yield return new TestCaseData(new List<string>()
+            {
+                "REPORT"
+            }, "").SetName("report as first command");
         }
     }
 }
