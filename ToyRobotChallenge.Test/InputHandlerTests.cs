@@ -16,7 +16,7 @@ namespace ToyRobotChallenge.Test
             robotMock.SetupGet(x => x.CurrentPosition).Returns(position);
             var robot = robotMock.Object;
             var actualReportOutput = "";
-            var inputHandler = new InputHandler(robot, (s) => actualReportOutput = s);
+            var inputHandler = new RobotInputHandler(robot, (s) => actualReportOutput = s);
 
             inputHandler.ProcessInputLine("REPORT");
 
@@ -57,7 +57,7 @@ namespace ToyRobotChallenge.Test
                     actualDirection = d;
                 }).Verifiable();
             var robot = robotMock.Object;
-            var inputHandler = new InputHandler(robot, (s) => { });
+            var inputHandler = new RobotInputHandler(robot, (s) => { });
 
             inputHandler.ProcessInputLine(inputLine);
 
@@ -87,7 +87,7 @@ namespace ToyRobotChallenge.Test
             var robotMock = new Mock<IRobot>();
             robotMock.Setup(x => x.Move()).Verifiable();
             var robot = robotMock.Object;
-            var inputHandler = new InputHandler(robot, (s) => { });
+            var inputHandler = new RobotInputHandler(robot, (s) => { });
 
             inputHandler.ProcessInputLine(inputLine);
 
@@ -113,7 +113,7 @@ namespace ToyRobotChallenge.Test
             var robotMock = new Mock<IRobot>();
             robotMock.Setup(x => x.TurnLeft()).Verifiable();
             var robot = robotMock.Object;
-            var inputHandler = new InputHandler(robot, (s) => { });
+            var inputHandler = new RobotInputHandler(robot, (s) => { });
 
             inputHandler.ProcessInputLine(inputLine);
 
@@ -139,7 +139,7 @@ namespace ToyRobotChallenge.Test
             var robotMock = new Mock<IRobot>();
             robotMock.Setup(x => x.TurnRight()).Verifiable();
             var robot = robotMock.Object;
-            var inputHandler = new InputHandler(robot, (s) => { });
+            var inputHandler = new RobotInputHandler(robot, (s) => { });
 
             inputHandler.ProcessInputLine(inputLine);
 

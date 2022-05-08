@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
-
-namespace ToyRobotChallenge
+﻿namespace ToyRobotChallenge
 {
     /// <summary>
     /// Interface for the management basic compass point direction in a 2d plane through turning left and right

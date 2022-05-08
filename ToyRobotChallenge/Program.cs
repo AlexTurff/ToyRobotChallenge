@@ -4,9 +4,9 @@ namespace ToyRobotChallenge
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var inputHandler = new InputHandler(new ToyRobot(), s => Console.WriteLine(s));
+            var inputHandler = new RobotInputHandler(new ToyRobot(), Console.WriteLine);
 
             while (true)
             {

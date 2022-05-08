@@ -1,7 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ToyRobotChallenge.Test
 {
@@ -14,7 +12,7 @@ namespace ToyRobotChallenge.Test
         {
             var output = "";
 
-            var inputHandler = new InputHandler(new ToyRobot(), (s) => output += s);
+            var inputHandler = new RobotInputHandler(new ToyRobot(), (s) => output += s);
 
             foreach(var inputLine in inputLines)
             {

@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ToyRobotChallenge
 {
-    public interface IInputHandler
-    {
-        void ProcessInputLine(string input);
-    }
-
-    public class InputHandler : IInputHandler
+    public class RobotInputHandler
     {
         private const string MoveCommand = "MOVE";
         private const string TurnLeftCommand = "LEFT";
@@ -23,7 +16,7 @@ namespace ToyRobotChallenge
         private readonly Action<string> _writeToInterfaceCallback;
         public IRobot RobotToControl { get; set; }
 
-        public InputHandler(IRobot robotToControl, Action<string> writeToInterfaceCallback)
+        public RobotInputHandler(IRobot robotToControl, Action<string> writeToInterfaceCallback)
         {
             RobotToControl = robotToControl ?? throw new ArgumentNullException(nameof(robotToControl));
             _writeToInterfaceCallback = writeToInterfaceCallback ?? throw new ArgumentNullException(nameof(writeToInterfaceCallback));
@@ -75,7 +68,7 @@ namespace ToyRobotChallenge
 
             var horizontalParsed = int.TryParse(horizontalGroupValue.Value, out int horizontalValue);
             var verticalParsed = int.TryParse(verticalGroupValue.Value, out int verticalValue);
-            var directionParsed = CompassDirectionParser.TryParseInputString(directionGroupValue.Value, out CompassDirection parsedDirection);
+            var directionParsed = CompassDirectionConverter.TryParseInputString(directionGroupValue.Value, out CompassDirection parsedDirection);
 
             if (!horizontalParsed || !verticalParsed || !directionParsed)
             {
@@ -92,7 +85,7 @@ namespace ToyRobotChallenge
 
         private string Report()
         {
-            return $"Output: {RobotToControl.CurrentPosition.HorizontalPosition},{RobotToControl.CurrentPosition.VerticalPosition},{RobotToControl.CurrentDirection?.ToString().ToUpper()}";
+            return $"Output: {RobotToControl.CurrentPosition.HorizontalPosition},{RobotToControl.CurrentPosition.VerticalPosition},{CompassDirectionConverter.CompassDirectionToOutputString(RobotToControl.CurrentDirection)}";
         }
     }
 }

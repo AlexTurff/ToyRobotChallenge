@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ToyRobotChallenge
+﻿namespace ToyRobotChallenge
 {
     public class Direction : IDirection
     {
@@ -14,7 +12,7 @@ namespace ToyRobotChallenge
 
         public CompassDirection TurnLeft()
         {
-            // enum values are just integers. Incrementing by 3 and modding by 4 is equivalent to subtracting 1 but doesn't have to deal with modding -ve values
+            // enum values are just integers. Incrementing by 3 and modding by 4 (4 directions) is equivalent to subtracting 1 but doesn't have to deal with modding -ve values
             CurrentDirection = (CompassDirection)(((int)CurrentDirection+3) % 4);
 
             return CurrentDirection;
@@ -22,7 +20,7 @@ namespace ToyRobotChallenge
 
         public CompassDirection TurnRight()
         {
-            // enum values are just integers. Incremement and mod4 to ensure its always a valid enum value
+            // enum values are just integers. Increment and mod 4 (4 directions) to ensure its always a valid enum value
             CurrentDirection = (CompassDirection)(((int)CurrentDirection + 1) % 4);
 
             return CurrentDirection;

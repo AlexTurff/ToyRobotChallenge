@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ToyRobotChallenge
+﻿namespace ToyRobotChallenge
 {
+    /// <summary>
+    /// Enum representing the cardinal compass directions
+    /// </summary>
     public enum CompassDirection
     {
         North = 0,

@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotChallenge", "ToyRobotChallenge\ToyRobotChallenge.csproj", "{2B2AE3A9-0A80-41C3-A126-23B2706BC153}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotChallenge.Test", "ToyRobotChallenge.Test\ToyRobotChallenge.Test.csproj", "{510ADB26-6387-4C72-8BE3-E71F932E2809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotChallenge.Test", "ToyRobotChallenge.Test\ToyRobotChallenge.Test.csproj", "{510ADB26-6387-4C72-8BE3-E71F932E2809}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5B006B06-B071-4D07-9161-EE9BB9C0395E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
