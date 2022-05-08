@@ -22,7 +22,7 @@ namespace ToyRobotChallenge {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ConsoleMessageResources {
+    public class ConsoleMessageResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ToyRobotChallenge {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ToyRobotChallenge.ConsoleMessageResources", typeof(ConsoleMessageResources).Assembly);
@@ -51,7 +51,7 @@ namespace ToyRobotChallenge {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ToyRobotChallenge {
         /// <summary>
         ///   Looks up a localized string similar to The last input line was not recognised as a valid command. Valid commands are: PLACE, MOVE, LEFT, RIGHT, REPORT .
         /// </summary>
-        internal static string InputNotRecognised {
+        public static string InputNotRecognised {
             get {
                 return ResourceManager.GetString("InputNotRecognised", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ToyRobotChallenge {
         /// <summary>
         ///   Looks up a localized string similar to The PLACE command must be in the format &quot;PLACE [X],[Y],[Direction]&quot; with Direction being one of the following: NORTH, EAST, SOUTH, WEST.
         /// </summary>
-        internal static string PlaceCommandBadFormat {
+        public static string PlaceCommandBadFormat {
             get {
                 return ResourceManager.GetString("PlaceCommandBadFormat", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ToyRobotChallenge {
         /// <summary>
         ///   Looks up a localized string similar to Requested position ({0},{1}) is not in bounds of the board of size ({2},{3}).
         /// </summary>
-        internal static string PlaceCommandOutOfRange {
+        public static string PlaceCommandOutOfRange {
             get {
                 return ResourceManager.GetString("PlaceCommandOutOfRange", resourceCulture);
             }

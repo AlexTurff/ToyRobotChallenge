@@ -51,6 +51,27 @@ namespace ToyRobotChallenge.Test
             {
                 "PLACE 2,2,NORTH","PLACE 2,4,NORTH","REPORT","RIGHT","RIGHT","MOVE","MOVE","REPORT"
             }, "Output: 2,4,NORTHOutput: 2,2,SOUTH").SetName("start in middle, replace at top, report, then move back to middle");
+
+            //failure cases
+            yield return new TestCaseData(new List<string>()
+            {
+                "dfgdfg",
+            }, ConsoleMessageResources.InputNotRecognised).SetName("gibberish command");
+
+            yield return new TestCaseData(new List<string>()
+            {
+                "PLACE 2,2,NORTH","move"
+            }, ConsoleMessageResources.InputNotRecognised).SetName("bad command (lower case)");
+
+            yield return new TestCaseData(new List<string>()
+            {
+                "PLACE 2,,NORTH"
+            }, ConsoleMessageResources.PlaceCommandBadFormat).SetName("bad PLACE command format");
+
+            yield return new TestCaseData(new List<string>()
+            {
+                "PLACE 22,22,NORTH"
+            }, string.Format(ConsoleMessageResources.PlaceCommandOutOfRange,"22","22","5","5")).SetName("bad PLACE command format");
         }
     }
 }

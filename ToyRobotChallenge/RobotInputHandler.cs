@@ -80,7 +80,14 @@ namespace ToyRobotChallenge
             var coordinate = new Coordinate(horizontalValue, verticalValue);
             var direction = new Direction(parsedDirection);
 
-            RobotToControl.Place(coordinate, direction);
+            try
+            {
+                RobotToControl.Place(coordinate, direction);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                _writeToInterfaceCallback(e.Message);
+            }
         }
 
         private string Report()
